@@ -12,6 +12,7 @@ class Level
     @num = 1
     @map = Gosu::Image.new window, "images/maps/level#{@num}.png", true
     @stars = []
+    @player = Player.new window, 600, 456
     generate_stars
   end
 
@@ -40,6 +41,12 @@ class Level
     @stars.each do |s|
       s.draw
     end
+    @player.draw
+  end
+
+  #update
+  def update
+    @player.move
   end
 
 end

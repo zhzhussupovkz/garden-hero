@@ -5,6 +5,7 @@ require "singleton"
 
 require_relative "core/level"
 require_relative "core/star"
+require_relative "core/player"
 require_relative "core/game_window"
 
 GameWindow.instance.show

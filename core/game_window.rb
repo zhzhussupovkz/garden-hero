@@ -26,6 +26,11 @@ class GameWindow < Gosu::Window
     @level.draw
   end
 
+  #update
+  def update
+    @level.update
+  end
+
   #button down event
   def button_down(key)
     case key
