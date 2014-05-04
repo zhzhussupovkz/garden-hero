@@ -53,22 +53,22 @@ class Player
 
   def move_left
     @face = 'left'
-    @x -= 2
+    @x -= 2 if @x >= 2
   end
 
   def move_right
     @face = 'right'
-    @x += 2
+    @x += 2 if @x <= 624
   end
 
   def move_up
     @face = 'up'
-    @y -= 2
+    @y -= 2 if @y >= 2
   end
 
   def move_down
     @face = 'down'
-    @y += 2
+    @y += 2 if @y <= 460
   end
 
   #collect stars by player
