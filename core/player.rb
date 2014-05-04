@@ -9,14 +9,17 @@ class Player
 
   def initialize window, x, y
     @window, @x, @y = window, x, y
-    @face = 'left'
+    @face, @score, @stars, @lives = 'left', 0, 0, 3
     @left = Gosu::Image.new window, "images/player/player-left.png", false
     @right = Gosu::Image.new window, "images/player/player-right.png", false
     @up = Gosu::Image.new window, "images/player/player-up.png", false
     @down = Gosu::Image.new window, "images/player/player-down.png", false
+    @ui_star = Gosu::Image.new window, "images/player/star.png", true
+    @ui_lives = Gosu::Image.new window, "images/player/heart.png", true
+    @ui = Gosu::Font.new(window, 'Monospace', 20)
   end
 
-  attr_reader :window, :face
+  attr_reader :window, :face, :x, :y
 
   #draw
   def draw
@@ -30,6 +33,13 @@ class Player
     when 'down'
       @down.draw(@x, @y, 1)
     end
+    @ui_star.draw(8, 484, 1)
+    size = 16
+    @lives.times do
+      @ui_lives.draw(632 - size, 484, 1)
+      size += 16
+    end
+    @ui.draw("#{@stars}", 24, 484, 1)
   end
 
   #player movement logic
@@ -38,6 +48,7 @@ class Player
     move_right if window.button_down? Gosu::KbRight
     move_up if window.button_down? Gosu::KbUp
     move_down if window.button_down? Gosu::KbDown
+    collect_stars
   end
 
   def move_left
@@ -58,6 +69,24 @@ class Player
   def move_down
     @face = 'down'
     @y += 2
+  end
+
+  #collect stars by player
+  def collect_stars
+    window.level.stars.each do |s|
+      if (x - s.x).abs <= 8 && (y - s.y).abs <= 8 && s.drawing
+        add_stars_score
+      end
+    end
+    window.level.stars.reject! do |s|
+      (x - s.x).abs <= 8 && (y - s.y).abs <= 8
+    end
+  end
+
+  #add score when collect stars by player
+  def add_stars_score
+    @score += 100
+    @stars += 1
   end
   
 end

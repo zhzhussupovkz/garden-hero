@@ -10,7 +10,7 @@ class GameWindow < Gosu::Window
   include Singleton
 
   def initialize
-    super 640, 480, false
+    super 640, 504, false
     self.caption = 'Garden Hero'
     begin
       @level = Level.new self
