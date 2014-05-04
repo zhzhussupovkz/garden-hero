@@ -12,8 +12,10 @@ class Level
     @num = 1
     @map = Gosu::Image.new window, "images/maps/level#{@num}.png", true
     @stars = []
+    @enemies = []
     @player = Player.new window, 600, 456
     generate_stars
+    generate_enemies
   end
 
   #generate stars
@@ -35,11 +37,22 @@ class Level
     end
   end
 
+  #generate enemies
+  def generate_enemies
+    @enemies << Enemy.new(@window, 8, 100, 'down')
+    @enemies << Enemy.new(@window, 400, 55, 'right')
+    @enemies << Enemy.new(@window, 376, 200, 'down')
+    @enemies << Enemy.new(@window, 87, 200, 'down')
+  end
+
   #draw
   def draw
     @map.draw 0, 0, 0
     @stars.each do |s|
       s.draw
+    end
+    @enemies.each do |e|
+      e.draw
     end
     @player.draw
   end
