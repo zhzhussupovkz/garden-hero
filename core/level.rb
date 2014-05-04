@@ -13,14 +13,15 @@ class Level
     @map = Gosu::Image.new window, "images/maps/level#{@num}.png", true
     @scoreboard = Gosu::Image.new window, "images/maps/scoreboard.png", true
     @ui = Gosu::Font.new(window, 'Monospace', 20)
-    @stars = []
+    @stars, @apples = [], []
     @enemies = []
     @player = Player.new window, 600, 456
     generate_stars
+    generate_apples
     generate_enemies
   end
 
-  attr_reader :stars
+  attr_reader :stars, :apples
 
   #generate stars
   def generate_stars
@@ -45,6 +46,13 @@ class Level
     end
   end
 
+  #generate apples
+  def generate_apples
+    @apples << Apple.new(@window, 88, 175)
+    @apples << Apple.new(@window, 376, 175)
+    @apples << Apple.new(@window, 454, 56)
+  end
+
   #generate enemies
   def generate_enemies
     @enemies << Enemy.new(@window, 8, 100, 'down')
@@ -59,6 +67,9 @@ class Level
     @scoreboard.draw 0, 480, 0
     @stars.each do |s|
       s.draw
+    end
+    @apples.each do |a|
+      a.draw
     end
     @enemies.each do |e|
       e.draw

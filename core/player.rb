@@ -40,6 +40,7 @@ class Player
       size += 16
     end
     @ui.draw("#{@stars}", 24, 484, 1)
+    @ui.draw("#{@score}", 572 - (Math.log10(@score + 1).to_i) * 8, 483.5, 1)
   end
 
   #player movement logic
@@ -49,6 +50,7 @@ class Player
     move_up if window.button_down? Gosu::KbUp
     move_down if window.button_down? Gosu::KbDown
     collect_stars
+    collect_apples
   end
 
   def move_left
@@ -83,10 +85,28 @@ class Player
     end
   end
 
+  #collect apples by player
+  def collect_apples
+    window.level.apples.each do |a|
+      if (x - a.x).abs <= 8 && (y - a.y).abs <= 8
+        add_apples_score
+      end
+    end
+    window.level.apples.reject! do |a|
+      (x - a.x).abs <= 8 && (y - a.y).abs <= 8
+    end
+  end
+
   #add score when collect stars by player
   def add_stars_score
-    @score += 100
+    @score += 10
     @stars += 1
+  end
+
+  #add score when collect apples by player
+  def add_apples_score
+    @score += 50
+    @lives += 1 if @lives < 3
   end
   
 end
