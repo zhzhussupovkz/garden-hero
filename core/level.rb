@@ -12,6 +12,7 @@ class Level
     @num = 1
     @map = Gosu::Image.new window, "images/maps/level#{@num}.png", true
     @scoreboard = Gosu::Image.new window, "images/maps/scoreboard.png", true
+    @ui = Gosu::Font.new(window, 'Monospace', 20)
     @stars = []
     @enemies = []
     @player = Player.new window, 600, 456
@@ -38,6 +39,10 @@ class Level
     (125..500).step(75) do |i|
       @stars << Star.new(@window, i, 456)
     end
+
+    (125..250).step(75) do |i|
+      @stars << Star.new(@window, 456, i)
+    end
   end
 
   #generate enemies
@@ -59,6 +64,7 @@ class Level
       e.draw
     end
     @player.draw
+    @ui.draw("Level #{@num}", 300, 484, 1)
   end
 
   #update
