@@ -45,12 +45,14 @@ class Player
 
   #player movement logic
   def move
-    move_left if window.button_down? Gosu::KbLeft
-    move_right if window.button_down? Gosu::KbRight
-    move_up if window.button_down? Gosu::KbUp
-    move_down if window.button_down? Gosu::KbDown
-    collect_stars
-    collect_apples
+    if @lives > 0
+      move_left if window.button_down? Gosu::KbLeft
+      move_right if window.button_down? Gosu::KbRight
+      move_up if window.button_down? Gosu::KbUp
+      move_down if window.button_down? Gosu::KbDown
+      collect_stars
+      collect_apples
+    end
   end
 
   def move_left
