@@ -57,8 +57,8 @@ class Level
   def generate_enemies
     @enemies << Enemy.new(@window, 8, 100, 'down')
     @enemies << Enemy.new(@window, 400, 55, 'right')
-    @enemies << Enemy.new(@window, 376, 200, 'down')
-    @enemies << Enemy.new(@window, 87, 200, 'down')
+    @enemies << Enemy.new(@window, 376, 225, 'down')
+    @enemies << Enemy.new(@window, 87, 225, 'down')
   end
 
   #draw
@@ -81,6 +81,9 @@ class Level
   #update
   def update
     @player.move
+    @enemies.each do |e|
+      e.move
+    end
   end
 
 end

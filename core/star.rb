@@ -13,7 +13,6 @@ class Star
   end
 
   attr_reader :x, :y
-  attr_accessor :drawing
   
   def draw
     @img.draw(@x, @y, 1)
