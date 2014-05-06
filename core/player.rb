@@ -78,7 +78,7 @@ class Player
   #collect stars by player
   def collect_stars
     window.level.stars.each do |s|
-      if (x - s.x).abs <= 8 && (y - s.y).abs <= 8 && s.drawing
+      if (x - s.x).abs <= 8 && (y - s.y).abs <= 8
         add_stars_score
       end
     end
