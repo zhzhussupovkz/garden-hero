@@ -13,8 +13,10 @@ class Level
     @map = Gosu::Image.new window, "images/maps/level#{@num}.png", true
     @scoreboard = Gosu::Image.new window, "images/maps/scoreboard.png", true
     @ui = Gosu::Font.new(window, 'Monospace', 20)
+    @game_over_ui = Gosu::Font.new(window, 'Monospace', 30)
     @stars, @apples = [], []
     @enemies = []
+    @game_over = false
     @player = Player.new window, 600, 456
     generate_stars
     generate_apples
@@ -22,6 +24,7 @@ class Level
   end
 
   attr_reader :stars, :apples
+  attr_accessor :game_over
 
   #generate stars
   def generate_stars
@@ -76,13 +79,16 @@ class Level
     end
     @player.draw
     @ui.draw("Level #{@num}", 300, 484, 1)
+    @game_over_ui.draw("GAME OVER", 240, 220, 2) if game_over
   end
 
   #update
   def update
-    @player.move
-    @enemies.each do |e|
-      e.move
+    if game_over == false
+      @player.move
+      @enemies.each do |e|
+        e.move
+      end
     end
   end
 

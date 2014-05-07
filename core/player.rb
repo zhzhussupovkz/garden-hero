@@ -52,6 +52,8 @@ class Player
       move_down if window.button_down? Gosu::KbDown
       collect_stars
       collect_apples
+    else
+      window.level.game_over = true
     end
   end
 
