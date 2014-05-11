@@ -16,6 +16,7 @@ class Player
     @down = Gosu::Image.new window, "images/player/player-down.png", false
     @ui_star = Gosu::Image.new window, "images/player/star.png", true
     @ui_lives = Gosu::Image.new window, "images/player/heart.png", true
+    @weapon = ApplePlayer.new window, self
     @ui = Gosu::Font.new(window, 'Monospace', 20)
   end
 
@@ -34,6 +35,7 @@ class Player
       @down.draw(@x, @y, 1)
     end
     @ui_star.draw(8, 484, 1)
+    @weapon.draw
     size = 16
     @lives.times do
       @ui_lives.draw(632 - size, 484, 1)
@@ -53,6 +55,8 @@ class Player
     else
       window.level.game_over = true
     end
+    attack if window.button_down? Gosu::KbSpace
+    @weapon.update
   end
 
   #player walking on horizontal roads
@@ -215,21 +219,25 @@ class Player
 
   def move_left
     @face = 'left'
+    @weapon.last_direction = 'left' if @weapon.drawing == false
     @x -= 2
   end
 
   def move_right
     @face = 'right'
+    @weapon.last_direction = 'right' if @weapon.drawing == false
     @x += 2
   end
 
   def move_up
     @face = 'up'
+    @weapon.last_direction = 'up' if @weapon.drawing == false
     @y -= 2
   end
 
   def move_down
     @face = 'down'
+    @weapon.last_direction = 'down' if @weapon.drawing == false
     @y += 2
   end
 
@@ -267,6 +275,23 @@ class Player
   def add_apples_score
     @score += 50
     @lives += 1 if @lives < 3
+  end
+
+  #attack enemies
+  def attack
+    if @weapon.drawing == false
+      case face
+      when 'left'
+        @weapon.x, @weapon.y = x - 4, y + 4
+      when 'right'
+        @weapon.x, @weapon.y = x + 12, y + 4
+      when 'up'
+        @weapon.x, @weapon.y = x + 4, y - 8
+      when 'down'
+        @weapon.x, @weapon.y = x + 4, y + 16
+      end
+    end
+    @weapon.drawing = true
   end
   
 end
