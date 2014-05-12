@@ -57,6 +57,7 @@ class Player
     end
     attack if window.button_down? Gosu::KbSpace
     @weapon.update
+    add_injury_to_enemies
   end
 
   #player walking on horizontal roads
@@ -292,6 +293,16 @@ class Player
       end
     end
     @weapon.drawing = true
+  end
+
+  #add injury to enemies
+  def add_injury_to_enemies
+    window.level.enemies.each do |e|
+      @weapon.drawing = false if Gosu::distance(e.x, e.y, @weapon.x, @weapon.y) <= 8
+    end
+    window.level.enemies.reject! do |e|
+      Gosu::distance(e.x, e.y, @weapon.x, @weapon.y) <= 8
+    end
   end
   
 end

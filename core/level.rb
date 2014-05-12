@@ -23,7 +23,7 @@ class Level
     generate_enemies
   end
 
-  attr_reader :stars, :apples
+  attr_reader :stars, :apples, :enemies
   attr_accessor :game_over
 
   #generate stars

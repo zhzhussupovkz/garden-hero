@@ -16,7 +16,7 @@ class Enemy
     @right_x, @left_x, @down_y, @up_y = @x + 50, @x - 50, @y + 50, @y - 50
   end
 
-  attr_reader :window, :face, :right_x, :left_x, :up_y, :down_y
+  attr_reader :window, :x, :y, :face, :right_x, :left_x, :up_y, :down_y
 
   #draw
   def draw
