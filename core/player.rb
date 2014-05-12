@@ -278,6 +278,11 @@ class Player
     @lives += 1 if @lives < 3
   end
 
+  #add score when kill enemies
+  def add_enemies_score
+    @score += 75
+  end
+
   #attack enemies
   def attack
     if @weapon.drawing == false
@@ -298,7 +303,10 @@ class Player
   #add injury to enemies
   def add_injury_to_enemies
     window.level.enemies.each do |e|
-      @weapon.drawing = false if Gosu::distance(e.x, e.y, @weapon.x, @weapon.y) <= 8
+      if Gosu::distance(e.x, e.y, @weapon.x, @weapon.y) <= 8
+        @weapon.drawing = false
+        add_enemies_score
+      end
     end
     window.level.enemies.reject! do |e|
       Gosu::distance(e.x, e.y, @weapon.x, @weapon.y) <= 8
