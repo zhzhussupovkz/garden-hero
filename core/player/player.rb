@@ -52,10 +52,10 @@ class Player
       walk_on_vertical_roads
       collect_stars
       collect_apples
+      attack if window.button_down? Gosu::KbSpace
     else
       window.level.game_over = true
     end
-    attack if window.button_down? Gosu::KbSpace
     @weapon.update
     add_injury_to_enemies
   end

@@ -3,12 +3,12 @@
 require "gosu"
 require "singleton"
 
-require_relative "core/level"
-require_relative "core/star"
-require_relative "core/apple"
-require_relative "core/apple_player"
-require_relative "core/player"
-require_relative "core/enemy"
+require_relative "core/level/level"
+require_relative "core/level/star"
+require_relative "core/level/apple"
+require_relative "core/level/enemy"
+require_relative "core/player/apple_player"
+require_relative "core/player/player"
 require_relative "core/game_window"
 
 GameWindow.instance.show
