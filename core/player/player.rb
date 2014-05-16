@@ -62,48 +62,51 @@ class Player
 
   #player walking on horizontal roads
   def walk_on_horizontal_roads
-    if (x >= 82 && x <= 604 && y >= 448 && y <= 460)
-      if window.button_down? Gosu::KbLeft
-        move_left if @x >= 90
+    case window.level.num
+    when 1
+      if (x >= 82 && x <= 604 && y >= 448 && y <= 460)
+        if window.button_down? Gosu::KbLeft
+          move_left if @x >= 90
+        end
+        if window.button_down? Gosu::KbRight
+          move_right if @x <= 600
+        end
+        if window.button_down? Gosu::KbUp
+          move_up if @y >= 453
+        end
+        if window.button_down? Gosu::KbDown
+          move_down if @y <= 454
+        end
       end
-      if window.button_down? Gosu::KbRight
-        move_right if @x <= 600
-      end
-      if window.button_down? Gosu::KbUp
-        move_up if @y >= 453
-      end
-      if window.button_down? Gosu::KbDown
-        move_down if @y <= 454
-      end
-    end
 
-    if (x >= 4 && x <= 604 && y >= 306 && y <= 314)
-      if window.button_down? Gosu::KbLeft
-        move_left if @x >= 8
+      if (x >= 4 && x <= 604 && y >= 306 && y <= 314)
+        if window.button_down? Gosu::KbLeft
+          move_left if @x >= 8
+        end
+        if window.button_down? Gosu::KbRight
+          move_right if @x <= 600
+        end
+        if window.button_down? Gosu::KbUp
+          move_up if @y >= 308
+        end
+        if window.button_down? Gosu::KbDown
+          move_down if @y <= 310
+        end
       end
-      if window.button_down? Gosu::KbRight
-        move_right if @x <= 600
-      end
-      if window.button_down? Gosu::KbUp
-        move_up if @y >= 308
-      end
-      if window.button_down? Gosu::KbDown
-        move_down if @y <= 310
-      end
-    end
 
-    if (x >= 4 && x <= 462 && y >= 44 && y <= 56)
-      if window.button_down? Gosu::KbLeft
-        move_left if @x >= 8
-      end
-      if window.button_down? Gosu::KbRight
-        move_right if @x <= 458
-      end
-      if window.button_down? Gosu::KbUp
-        move_up if @y >= 52
-      end
-      if window.button_down? Gosu::KbDown
-        move_down if @y <= 53
+      if (x >= 4 && x <= 462 && y >= 44 && y <= 56)
+        if window.button_down? Gosu::KbLeft
+          move_left if @x >= 8
+        end
+        if window.button_down? Gosu::KbRight
+          move_right if @x <= 458
+        end
+        if window.button_down? Gosu::KbUp
+          move_up if @y >= 52
+        end
+        if window.button_down? Gosu::KbDown
+          move_down if @y <= 53
+        end
       end
     end
   end
@@ -111,108 +114,111 @@ class Player
 
   #player walking on vertical roads
   def walk_on_vertical_roads
-    if (x >= 590 && x <= 602 && y >= 312 && y <= 460)
-      if window.button_down? Gosu::KbLeft
-        move_left if @x >= 598
+    case window.level.num
+    when 1
+      if (x >= 590 && x <= 602 && y >= 312 && y <= 460)
+        if window.button_down? Gosu::KbLeft
+          move_left if @x >= 598
+        end
+        if window.button_down? Gosu::KbRight
+          move_right if @x <= 600
+        end
+        if window.button_down? Gosu::KbUp
+          move_up if @y >= 316
+        end
+        if window.button_down? Gosu::KbDown
+          move_down if @y <= 454
+        end
       end
-      if window.button_down? Gosu::KbRight
-        move_right if @x <= 600
-      end
-      if window.button_down? Gosu::KbUp
-        move_up if @y >= 316
-      end
-      if window.button_down? Gosu::KbDown
-        move_down if @y <= 454
-      end
-    end
 
-    if (x >= 546 && x <= 560 && y >= 220 && y <= 314)
-      if window.button_down? Gosu::KbLeft
-        move_left if @x >= 550
+      if (x >= 546 && x <= 560 && y >= 220 && y <= 314)
+        if window.button_down? Gosu::KbLeft
+          move_left if @x >= 550
+        end
+        if window.button_down? Gosu::KbRight
+          move_right if @x <= 554
+        end
+        if window.button_down? Gosu::KbUp
+          move_up if @y >= 222
+        end
+        if window.button_down? Gosu::KbDown
+          move_down if @y <= 310
+        end
       end
-      if window.button_down? Gosu::KbRight
-        move_right if @x <= 554
-      end
-      if window.button_down? Gosu::KbUp
-        move_up if @y >= 222
-      end
-      if window.button_down? Gosu::KbDown
-        move_down if @y <= 310
-      end
-    end
 
-    if (x >= 448 && x <= 460 && y >= 50 && y <= 314)
-      if window.button_down? Gosu::KbLeft
-        move_left if @x >= 454
+      if (x >= 448 && x <= 460 && y >= 50 && y <= 314)
+        if window.button_down? Gosu::KbLeft
+          move_left if @x >= 454
+        end
+        if window.button_down? Gosu::KbRight
+          move_right if @x <= 458
+        end
+        if window.button_down? Gosu::KbUp
+          move_up if @y >= 56
+        end
+        if window.button_down? Gosu::KbDown
+          move_down if @y <= 310
+        end
       end
-      if window.button_down? Gosu::KbRight
-        move_right if @x <= 458
-      end
-      if window.button_down? Gosu::KbUp
-        move_up if @y >= 56
-      end
-      if window.button_down? Gosu::KbDown
-        move_down if @y <= 310
-      end
-    end
 
-    if (x >= 368 && x <= 380 && y >= 160 && y <= 314)
-      if window.button_down? Gosu::KbLeft
-        move_left if @x >= 374
+      if (x >= 368 && x <= 380 && y >= 160 && y <= 314)
+        if window.button_down? Gosu::KbLeft
+          move_left if @x >= 374
+        end
+        if window.button_down? Gosu::KbRight
+          move_right if @x <= 376
+        end
+        if window.button_down? Gosu::KbUp
+          move_up if @y >= 164
+        end
+        if window.button_down? Gosu::KbDown
+          move_down if @y <= 310
+        end
       end
-      if window.button_down? Gosu::KbRight
-        move_right if @x <= 376
-      end
-      if window.button_down? Gosu::KbUp
-        move_up if @y >= 164
-      end
-      if window.button_down? Gosu::KbDown
-        move_down if @y <= 310
-      end
-    end
 
-    if (x >= 80 && x <= 96 && y >= 160 && y <= 314)
-      if window.button_down? Gosu::KbLeft
-        move_left if @x >= 86
+      if (x >= 80 && x <= 96 && y >= 160 && y <= 314)
+        if window.button_down? Gosu::KbLeft
+          move_left if @x >= 86
+        end
+        if window.button_down? Gosu::KbRight
+          move_right if @x <= 88
+        end
+        if window.button_down? Gosu::KbUp
+          move_up if @y >= 164
+        end
+        if window.button_down? Gosu::KbDown
+          move_down if @y <= 310
+        end
       end
-      if window.button_down? Gosu::KbRight
-        move_right if @x <= 88
-      end
-      if window.button_down? Gosu::KbUp
-        move_up if @y >= 164
-      end
-      if window.button_down? Gosu::KbDown
-        move_down if @y <= 310
-      end
-    end
 
-    if (x >= 4 && x <= 16 && y >= 4 && y <= 314)
-      if window.button_down? Gosu::KbLeft
-        move_left if @x >= 8
+      if (x >= 4 && x <= 16 && y >= 4 && y <= 314)
+        if window.button_down? Gosu::KbLeft
+          move_left if @x >= 8
+        end
+        if window.button_down? Gosu::KbRight
+          move_right if @x <= 9
+        end
+        if window.button_down? Gosu::KbUp
+          move_up if @y >= 6
+        end
+        if window.button_down? Gosu::KbDown
+          move_down if @y <= 310
+        end
       end
-      if window.button_down? Gosu::KbRight
-        move_right if @x <= 9
-      end
-      if window.button_down? Gosu::KbUp
-        move_up if @y >= 6
-      end
-      if window.button_down? Gosu::KbDown
-        move_down if @y <= 310
-      end
-    end
 
-    if (x >= 82 && x <= 92 && y >= 428 && y <= 460)
-      if window.button_down? Gosu::KbLeft
-        move_left if @x >= 88
-      end
-      if window.button_down? Gosu::KbRight
-        move_right if @x <= 90
-      end
-      if window.button_down? Gosu::KbUp
-        move_up if @y >= 430
-      end
-      if window.button_down? Gosu::KbDown
-        move_down if @y <= 454
+      if (x >= 82 && x <= 92 && y >= 428 && y <= 460)
+        if window.button_down? Gosu::KbLeft
+          move_left if @x >= 88
+        end
+        if window.button_down? Gosu::KbRight
+          move_right if @x <= 90
+        end
+        if window.button_down? Gosu::KbUp
+          move_up if @y >= 430
+        end
+        if window.button_down? Gosu::KbDown
+          move_down if @y <= 454
+        end
       end
     end
   end

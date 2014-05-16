@@ -4,6 +4,7 @@ require "gosu"
 require "singleton"
 
 require_relative "core/level/level"
+require_relative "core/level/level_generator"
 require_relative "core/level/star"
 require_relative "core/level/apple"
 require_relative "core/level/enemy"
