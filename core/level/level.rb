@@ -25,6 +25,17 @@ class Level
   attr_reader :stars, :apples, :enemies, :num
   attr_accessor :game_over
 
+  #go next level
+  def go_next_level
+    @num += 1
+    @map = Gosu::Image.new @window, "images/maps/level#{@num}.png", true
+    @generator = LevelGenerator.new @num, @window
+    @player = @generator.create_player
+    @stars = @generator.generate_stars
+    @apples = @generator.generate_apples
+    @enemies = @generator.generate_enemies
+  end
+
   #draw
   def draw
     @map.draw 0, 0, 0
@@ -50,6 +61,7 @@ class Level
       @enemies.each do |e|
         e.move
       end
+      go_next_level if stars.empty?
     end
   end
 
