@@ -7,8 +7,8 @@
 #Player - main player class
 class Player
 
-  def initialize window, x, y
-    @window, @x, @y = window, x, y
+  def initialize window
+    @window, @x, @y = window, 600, 456
     @face, @score, @stars, @lives = 'left', 0, 0, 3
     @left = Gosu::Image.new window, "images/player/player-left.png", false
     @right = Gosu::Image.new window, "images/player/player-right.png", false
@@ -21,6 +21,11 @@ class Player
   end
 
   attr_reader :window, :face, :x, :y
+
+  #set player coordinates in new level
+  def start_point x, y
+    @x, @y = x, y
+  end
 
   #draw
   def draw
@@ -43,7 +48,6 @@ class Player
     end
     @ui.draw("#{@stars}", 24, 484, 1)
     @ui.draw("#{@score}", 572 - (Math.log10(@score + 1).to_i) * 8, 483.5, 1)
-    @ui.draw("#{x} #{y}", 100, 484, 1)
   end
 
   #player movement logic

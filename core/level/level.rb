@@ -15,8 +15,9 @@ class Level
     @ui = Gosu::Font.new(window, 'Monospace', 20)
     @game_over_ui = Gosu::Font.new(window, 'Monospace', 30)
     @game_over = false
+    @player = Player.new window
     @generator = LevelGenerator.new @num, @window
-    @player = @generator.create_player
+    @generator.start_point @player
     @stars = @generator.generate_stars
     @apples = @generator.generate_apples
     @enemies = @generator.generate_enemies
@@ -30,7 +31,7 @@ class Level
     @num += 1
     @map = Gosu::Image.new @window, "images/maps/level#{@num}.png", true
     @generator = LevelGenerator.new @num, @window
-    @player = @generator.create_player
+    @generator.start_point @player
     @stars = @generator.generate_stars
     @apples = @generator.generate_apples
     @enemies = @generator.generate_enemies

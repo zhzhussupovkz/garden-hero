@@ -13,13 +13,13 @@ class LevelGenerator
 
   attr_reader :num
 
-  #create main player
-  def create_player
+  #set player position
+  def start_point player
     case num
     when 1
-      Player.new @window, 600, 456
+      player.start_point 600, 456
     when 2
-      Player.new @window, 620, 168
+      player.start_point 620, 168
     end
   end
 
