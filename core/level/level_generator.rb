@@ -15,7 +15,12 @@ class LevelGenerator
 
   #create main player
   def create_player
-    Player.new @window, 600, 456
+    case num
+    when 1
+      Player.new @window, 600, 456
+    when 2
+      Player.new @window, 620, 168
+    end
   end
 
   #generate stars 
@@ -42,6 +47,18 @@ class LevelGenerator
       (125..250).step(75) do |i|
         stars << Star.new(@window, 456, i)
       end
+    when 2
+      (100..175).step(50) do |i|
+        stars << Star.new(@window, 72, i)
+        stars << Star.new(@window, 296, i)
+        stars << Star.new(@window, 552, i)
+      end
+      (120..475).step(50) do |i|
+        stars << Star.new(@window, i, 440)
+      end
+      (256..332).step(50) do |i|
+        stars << Star.new(@window, 296, i)
+      end
     end
     stars
   end
@@ -54,6 +71,10 @@ class LevelGenerator
       apples << Apple.new(@window, 88, 175)
       apples << Apple.new(@window, 376, 175)
       apples << Apple.new(@window, 454, 56)
+    when 2
+      apples << Apple.new(@window, 88, 388)
+      apples << Apple.new(@window, 536, 388)
+      apples << Apple.new(@window, 296, 224)
     end
     apples
   end
@@ -67,6 +88,10 @@ class LevelGenerator
       enemies << Enemy.new(@window, 400, 55, 'right')
       enemies << Enemy.new(@window, 376, 225, 'down')
       enemies << Enemy.new(@window, 87, 225, 'down')
+    when 2
+      enemies << Enemy.new(@window, 160, 167, 'right')
+      enemies << Enemy.new(@window, 460, 167, 'right')
+      enemies << Enemy.new(@window, 296, 372, 'down')
     end
     enemies
   end

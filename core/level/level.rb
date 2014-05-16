@@ -18,7 +18,7 @@ class Level
     @generator = LevelGenerator.new @num, @window
     @player = @generator.create_player
     @stars = @generator.generate_stars
-    @apples = @generator.generate_stars
+    @apples = @generator.generate_apples
     @enemies = @generator.generate_enemies
   end
 
