@@ -14,21 +14,26 @@ class GameWindow < Gosu::Window
     self.caption = 'Garden Hero'
     begin
       @level = Level.new self
+      @menu = Menu.new self
+      @pause = true
     rescue Exception => e
       puts "#{e.class}: #{e.message}"
     end
   end
 
   attr_reader :level
+  attr_accessor :pause
 
   #draw
   def draw
-    @level.draw
+    @menu.draw
+    @level.draw if @menu.display === false
   end
 
   #update
   def update
-    @level.update
+    @menu.update if pause
+    @level.update if not pause
   end
 
   #button down event
@@ -36,6 +41,8 @@ class GameWindow < Gosu::Window
     case key
     when Gosu::KbEscape
       close
+    when Gosu::KbP
+      @pause = !@pause if @menu.display === false
     end
   end
 end

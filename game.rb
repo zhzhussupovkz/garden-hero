@@ -10,6 +10,7 @@ require_relative "core/level/apple"
 require_relative "core/level/enemy"
 require_relative "core/player/apple_player"
 require_relative "core/player/player"
+require_relative "core/menu/menu.rb"
 require_relative "core/game_window"
 
 GameWindow.instance.show

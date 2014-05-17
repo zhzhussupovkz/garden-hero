@@ -23,7 +23,7 @@ class Level
     @enemies = @generator.generate_enemies
   end
 
-  attr_reader :stars, :apples, :enemies, :num
+  attr_reader :stars, :apples, :enemies, :num, :window
   attr_accessor :game_over
 
   #go next level
@@ -52,6 +52,7 @@ class Level
     end
     @player.draw
     @ui.draw("Level #{@num}", 300, 484, 1)
+    @game_over_ui.draw("PAUSE", 276, 220, 2) if window.pause
     @game_over_ui.draw("GAME OVER", 240, 220, 2) if game_over
   end
 
