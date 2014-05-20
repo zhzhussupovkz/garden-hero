@@ -28,13 +28,15 @@ class Level
 
   #go next level
   def go_next_level
-    @num += 1
-    @map = Gosu::Image.new @window, "images/maps/level#{@num}.png", true
-    @generator = LevelGenerator.new @num, @window
-    @generator.start_point @player
-    @stars = @generator.generate_stars
-    @apples = @generator.generate_apples
-    @enemies = @generator.generate_enemies
+    if @num <= 1
+      @num += 1
+      @map = Gosu::Image.new @window, "images/maps/level#{@num}.png", true
+      @generator = LevelGenerator.new @num, @window
+      @generator.start_point @player
+      @stars = @generator.generate_stars
+      @apples = @generator.generate_apples
+      @enemies = @generator.generate_enemies
+    end
   end
 
   #draw
