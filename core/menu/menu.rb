@@ -45,21 +45,23 @@ class Menu
   end
 
   def update
-    if 270 < @window.mouse_x &&
-    @window.mouse_x < 366 &&
-    240 < @window.mouse_y &&
-    @window.mouse_y < 272 && (@window.button_down? Gosu::MsLeft)
-      new_game
-    elsif 270 < @window.mouse_x &&
-    @window.mouse_x < 366 &&
-    290 < @window.mouse_y &&
-    @window.mouse_y < 316 && (@window.button_down? Gosu::MsLeft)
-      show_controls
-    elsif 270 < @window.mouse_x &&
-    @window.mouse_x < 366 &&
-    338 < @window.mouse_y &&
-    @window.mouse_y < 362 && (@window.button_down? Gosu::MsLeft)
-      exit
+    if @show_controls == false
+      if 270 < @window.mouse_x &&
+      @window.mouse_x < 366 &&
+      240 < @window.mouse_y &&
+      @window.mouse_y < 272 && (@window.button_down? Gosu::MsLeft)
+        new_game
+      elsif 270 < @window.mouse_x &&
+      @window.mouse_x < 366 &&
+      290 < @window.mouse_y &&
+      @window.mouse_y < 316 && (@window.button_down? Gosu::MsLeft)
+        show_controls
+      elsif 270 < @window.mouse_x &&
+      @window.mouse_x < 366 &&
+      338 < @window.mouse_y &&
+      @window.mouse_y < 362 && (@window.button_down? Gosu::MsLeft)
+        exit
+      end
     end
     @show_controls = false if @window.button_down? Gosu::KbSpace
   end
