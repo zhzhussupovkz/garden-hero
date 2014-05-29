@@ -42,6 +42,7 @@ class Menu
         @ctrl.draw("Press SPACE to go to the menu", 224, 386, 3)
       end
     end
+    @copyright.draw("YOU ARE WIN!", 272, 212, 3) if @window.win_game
   end
 
   def update

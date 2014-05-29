@@ -15,13 +15,13 @@ class GameWindow < Gosu::Window
     begin
       @level = Level.new self
       @menu = Menu.new self
-      @pause = true
+      @pause, @win_game = true, false
     rescue Exception => e
       puts "#{e.class}: #{e.message}"
     end
   end
 
-  attr_reader :level
+  attr_reader :level, :win_game
   attr_accessor :pause
 
   #draw
