@@ -16,13 +16,14 @@ class GameWindow < Gosu::Window
       @level = Level.new self
       @menu = Menu.new self
       @pause, @win_game = true, false
+      @total_score = 0
     rescue Exception => e
       puts "#{e.class}: #{e.message}"
     end
   end
 
-  attr_reader :level, :win_game
-  attr_accessor :pause
+  attr_reader :level
+  attr_accessor :pause, :total_score, :win_game
 
   #draw
   def draw
@@ -32,8 +33,9 @@ class GameWindow < Gosu::Window
 
   #update
   def update
-    @menu.update if pause
-    @level.update if not pause
+    @menu.display = true if win_game
+    @menu.update if pause || win_game
+    @level.update if not pause && win_game == false
   end
 
   #button down event

@@ -20,7 +20,7 @@ class Player
     @ui = Gosu::Font.new(window, 'Monospace', 20)
   end
 
-  attr_reader :window, :face, :x, :y
+  attr_reader :window, :face, :x, :y, :score
 
   #set player coordinates in new level
   def start_point x, y
@@ -58,6 +58,11 @@ class Player
       collect_stars
       collect_apples
       attack if window.button_down? Gosu::KbSpace
+      if @stars == 36
+        @window.win_game = true
+        @window.total_score += score
+        @stars = 0
+      end
     else
       window.level.game_over = true
     end

@@ -41,12 +41,18 @@ class Menu
         @ctrl.draw("P", 336, 288, 3)
         @ctrl.draw("Press SPACE to go to the menu", 224, 386, 3)
       end
+      if @window.win_game
+        @controls.draw(200, 208, 2)
+        @copyright.draw("YOU ARE WIN!", 272, 250, 3)
+        @copyright.draw("SCORE:", 300, 275, 3)
+        @copyright.draw("#{@window.total_score}", 320 - ((Math.log10(@window.total_score + 2).to_i) * 8)/2, 300, 3)
+        @copyright.draw("Press ESC to exit from game", 210, 350, 3)
+      end
     end
-    @copyright.draw("YOU ARE WIN!", 272, 212, 3) if @window.win_game
   end
 
   def update
-    if @show_controls == false
+    if @show_controls == false && @window.win_game == false
       if 270 < @window.mouse_x &&
       @window.mouse_x < 366 &&
       240 < @window.mouse_y &&
