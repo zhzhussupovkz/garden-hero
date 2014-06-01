@@ -10,6 +10,7 @@ class Player
   def initialize window
     @window, @x, @y = window, 600, 456
     @face, @score, @stars, @lives = 'left', 0, 0, 3
+    @stamina = 100
     @left = Gosu::Image.new window, "images/player/player-left.png", false
     @right = Gosu::Image.new window, "images/player/player-right.png", false
     @up = Gosu::Image.new window, "images/player/player-up.png", false
@@ -421,6 +422,25 @@ class Player
     @weapon.drawing = true
   end
 
+  #add injury when enemies attack
+  def add_injury
+    case face
+    when 'left'
+      @x += 4
+    when 'right'
+      @x -= 4
+    when 'up'
+      @y += 4
+    when 'down'
+      @y -= 4
+    end
+    @stamina -= 5
+    if @stamina <= 0
+      @stamina = 0
+      reboot
+    end
+  end
+
   #add injury to enemies
   def add_injury_to_enemies
     window.level.enemies.each do |e|
@@ -428,10 +448,25 @@ class Player
         @weapon.drawing = false
         add_enemies_score
       end
+      if Gosu::distance(e.x, e.y, x, y) <= 8
+        add_injury
+      end
     end
     window.level.enemies.reject! do |e|
       Gosu::distance(e.x, e.y, @weapon.x, @weapon.y) <= 8
     end
+  end
+
+  #reboot player 
+  def reboot
+    case window.level.num
+    when 1
+      start_point 600, 456
+    when 2
+      start_point 620, 168
+    end
+    @lives -= 1
+    @stamina = 100
   end
   
 end
