@@ -18,6 +18,7 @@ class Player
     @ui_star = Gosu::Image.new window, "images/player/star.png", true
     @ui_lives = Gosu::Image.new window, "images/player/heart.png", true
     @collect = Gosu::Song.new(window, "sounds/player/collect.ogg")
+    @collect_apples = Gosu::Song.new(window, "sounds/player/collect_apples.ogg")
     @weapon = ApplePlayer.new window, self
     @ui = Gosu::Font.new(window, 'Monospace', 20)
   end
@@ -383,7 +384,7 @@ class Player
     window.level.apples.each do |a|
       if (x - a.x).abs <= 8 && (y - a.y).abs <= 8
         add_apples_score
-        @collect.play(looping = false)
+        @collect_apples.play(looping = false)
       end
     end
     window.level.apples.reject! do |a|
