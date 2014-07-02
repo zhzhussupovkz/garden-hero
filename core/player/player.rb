@@ -383,6 +383,7 @@ class Player
     window.level.apples.each do |a|
       if (x - a.x).abs <= 8 && (y - a.y).abs <= 8
         add_apples_score
+        @collect.play(looping = false)
       end
     end
     window.level.apples.reject! do |a|
