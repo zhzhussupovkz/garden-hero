@@ -20,6 +20,7 @@ class Player
     @collect = Gosu::Song.new(window, "sounds/player/collect.ogg")
     @collect_apples = Gosu::Song.new(window, "sounds/player/collect_apples.ogg")
     @win_song = Gosu::Song.new(window, "sounds/level/win.ogg")
+    @game_over_song = Gosu::Song.new(window, "sounds/level/game_over.ogg")
     @weapon = ApplePlayer.new window, self
     @ui = Gosu::Font.new(window, 'Monospace', 20)
   end
@@ -70,6 +71,7 @@ class Player
       end
     else
       window.level.game_over = true
+      @game_over_song.play
     end
     @weapon.update
     add_injury_to_enemies

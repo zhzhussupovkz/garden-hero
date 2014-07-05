@@ -25,7 +25,8 @@ class Menu
       @bg.draw 0, 0, 0
       @cursor.draw @window.mouse_x, @window.mouse_y, 4
       year = (Time.at(Time.now.to_i)).strftime("%Y")
-      @copyright.draw("Copyright (c) #{year} by zhzhussupovkz", 175, 475, 1)
+      @copyright.draw("Copyright (c) #{year} by zhzhussupovkz", 175, 450, 1)
+      @copyright.draw("Music by Super Mario Bros.", 220, 475, 1)
       if @show_controls
         @controls.draw(200, 208, 2)
         @ctrl.draw("CONTROLS", 300, 216, 3)
