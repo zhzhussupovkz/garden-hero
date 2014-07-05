@@ -19,6 +19,7 @@ class Player
     @ui_lives = Gosu::Image.new window, "images/player/heart.png", true
     @collect = Gosu::Song.new(window, "sounds/player/collect.ogg")
     @collect_apples = Gosu::Song.new(window, "sounds/player/collect_apples.ogg")
+    @win_song = Gosu::Song.new(window, "sounds/level/win.ogg")
     @weapon = ApplePlayer.new window, self
     @ui = Gosu::Font.new(window, 'Monospace', 20)
   end
@@ -63,6 +64,7 @@ class Player
       attack if window.button_down? Gosu::KbSpace
       if @stars == 36
         @window.win_game = true
+        @win_song.play
         @window.total_score += score
         @stars = 0
       end
