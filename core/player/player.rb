@@ -21,6 +21,7 @@ class Player
     @collect_apples = Gosu::Song.new(window, "sounds/player/collect_apples.ogg")
     @win_song = Gosu::Song.new(window, "sounds/level/win.ogg")
     @game_over_song = Gosu::Song.new(window, "sounds/level/game_over.ogg")
+    @die_song = Gosu::Song.new(window, "sounds/player/die.ogg")
     @weapon = ApplePlayer.new window, self
     @ui = Gosu::Font.new(window, 'Monospace', 20)
   end
@@ -444,6 +445,7 @@ class Player
     end
     @stamina -= 5
     if @stamina <= 0
+      @die_song.play(looping = false)
       @stamina = 0
       reboot
     end
